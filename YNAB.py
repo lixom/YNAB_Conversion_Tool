@@ -2,9 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-import csv
-import io
-import pyperclip
+from datetime import datetime
 
 st.set_page_config(
     page_title="YNAB Converter",
@@ -13,10 +11,6 @@ st.set_page_config(
 
 # App title
 st.title("Ynab")
-
-import streamlit as st
-import pandas as pd
-from datetime import datetime
 
 # Hardcoded column mappings for each file type
 COLUMN_MAPPINGS = {
@@ -193,7 +187,7 @@ if uploaded_files:
 
         # Configure column types for st.data_editor
         column_config = {
-            'Remove': st.column_config.CheckboxColumn('Exclude from export'),
+            'Remove': st.column_config.CheckboxColumn('Exclude'),
             'Date': st.column_config.DateColumn(),
             'Payee': st.column_config.TextColumn(),
             'Memo': st.column_config.TextColumn(),
