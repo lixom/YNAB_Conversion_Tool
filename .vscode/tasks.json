@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Setup Virtual Environment and Install Dependencies",
+            "type": "shell",
+            "command": "cmd",
+            "args": ["/C", "python -m venv venv && venv\\Scripts\\activate.bat && pip install -r requirements.txt"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Update and Verify Dependencies",
+            "type": "shell",
+            "command": "cmd",
+            "args": ["/C", "venv\\Scripts\\activate.bat && pip install --upgrade -r requirements.txt && pip check -r requirements.txt"],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Generate requirements.txt based on installed dependencies",
+            "type": "shell",
+            "command": "cmd",
+            "args": ["/C", "venv\\Scripts\\activate.bat && pip freeze > requirements.txt"],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ]
+}
