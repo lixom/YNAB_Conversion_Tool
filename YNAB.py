@@ -4,13 +4,7 @@ import pandas as pd
 
 from datetime import datetime
 
-st.set_page_config(
-    page_title="YNAB Converter",
-    page_icon="💰",
-)
 
-# App title
-st.title("Ynab")
 
 # Hardcoded column mappings for each file type
 COLUMN_MAPPINGS = {
@@ -90,8 +84,14 @@ def average_outflow(df):
     outflows = df[df['Outflow'] > 0]
     return outflows['Outflow'].mean() if not outflows.empty else 0
 
-# Streamlit UI
-st.title("YNAB CSV Generator")
+
+st.set_page_config(
+    page_title="YNAB Converter",
+    page_icon="💰",
+)
+
+# App title
+st.title("YNAB Converter")
 
 st.write(
     "Upload your transaction files and process them into a simplified YNAB-compatible format (Date, Payee, Memo, Inflow, Outflow)."
@@ -100,7 +100,7 @@ st.write(
 # Select file type with labeled options
 file_type = st.selectbox(
     "Select your file type:",
-    ["Swedbank (csv)", "Coop Mastercard (xls & xlsx)"]
+    ["Coop Mastercard (xls & xlsx)", "Swedbank (csv)"]
 )
 
 # File uploader for multiple files
