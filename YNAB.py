@@ -90,6 +90,19 @@ st.set_page_config(
     page_icon="💰",
 )
 
+with st.sidebar:
+
+    st.header("Helpers")
+    st.subheader("Credit limit Coop Mastercard")
+    st.write("Use this to make it easer to reconcile the account.")
+
+    credit_limit = st.number_input(label="Credit limit (SEK)", disabled=True, value=60000)
+    remaining_credit = st.number_input(label="Remaning credit (SEK)", placeholder="Enter value")
+    if remaining_credit is None:
+        remaining_credit = 0
+    account_balance = credit_limit - remaining_credit
+    st.metric(label="Account balance (SEK)", value=account_balance)
+
 # App title
 st.title("YNAB Converter")
 
