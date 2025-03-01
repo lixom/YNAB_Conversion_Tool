@@ -101,7 +101,9 @@ with st.sidebar:
     if remaining_credit is None:
         remaining_credit = 0
     account_balance = credit_limit - remaining_credit
-    st.metric(label="Account balance (SEK)", value=account_balance)
+    account_balance = str(account_balance)
+    account_balance = account_balance.replace(".", ",")
+    st.metric(label="Account balance (SEK)", value= account_balance)
 
 # App title
 st.title("YNAB Converter")
